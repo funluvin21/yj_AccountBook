@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccountBook.Class;
 
 namespace AccountBook
 {
     public partial class fMain : Form
     {
+        DBMysql _db = new DBMysql();
+
         public fMain()
         {
             InitializeComponent();
+        }
+
+        private void fMain_Load(object sender, EventArgs e)
+        {
+            _db.Connection();
         }
     }
 }

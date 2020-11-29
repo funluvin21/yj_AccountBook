@@ -75,5 +75,28 @@ namespace AccountBook
                 cnt++;
             }
         }
+
+        private void dvSettingInfo_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            int col = e.ColumnIndex;
+
+            if (Config.settingds.Tables[0].Rows.Count == row)
+            {
+                if (col == 0) _db.Insert(Config.Tables[(int)Config.eTName._setting] + "(import_info)",
+                    $"'{dvSettingInfo.Rows[row].Cells[col].Value.ToString()}'");
+                else _db.Insert(Config.Tables[(int)Config.eTName._setting] + "(export_info)",
+                    $"'{dvSettingInfo.Rows[row].Cells[col].Value.ToString()}'");
+            }
+            else
+            {
+                if (col == 0) _db.Update(Config.Tables[(int)Config.eTName._setting],
+                    $"import_info='{dvSettingInfo.Rows[row].Cells[col].Value.ToString()}'",
+                    $"(@rownum:=0)=0 and (@rownum:=@rownum+1)={row + 1}");
+                else _db.Update(Config.Tables[(int)Config.eTName._setting],
+                    $"export_info='{dvSettingInfo.Rows[row].Cells[col].Value.ToString()}'",
+                    $"(@rownum:=0)=0 and (@rownum:=@rownum+1)={row + 1}");
+            }
+        }
     }
 }

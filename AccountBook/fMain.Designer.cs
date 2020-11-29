@@ -217,6 +217,7 @@ namespace AccountBook
             this.dvSettingInfo.RowTemplate.Height = 23;
             this.dvSettingInfo.Size = new System.Drawing.Size(240, 334);
             this.dvSettingInfo.TabIndex = 3;
+            this.dvSettingInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvSettingInfo_CellValueChanged);
             // 
             // fMain
             // 

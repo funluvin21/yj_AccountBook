@@ -98,5 +98,24 @@ namespace AccountBook
                     $"(@rownum:=0)=0 and (@rownum:=@rownum+1)={row + 1}");
             }
         }
+
+        private void btnSettingSave_Click(object sender, EventArgs e)
+        {
+            _db.DeleteAll(Config.Tables[(int)Config.eTName._account]);
+            for (int i = 0; i < dvAccountInfo.RowCount - 1; i++)
+            {
+                _db.Insert(Config.Tables[(int)Config.eTName._account], $"'{dvAccountInfo.Rows[i].Cells[0].Value.ToString()}'," +
+                    $"'{dvAccountInfo.Rows[i].Cells[1].Value.ToString()}', '{dvAccountInfo.Rows[i].Cells[2].Value.ToString()}'," +
+                    $"'{dvAccountInfo.Rows[i].Cells[3].Value.ToString()}', '{dvAccountInfo.Rows[i].Cells[4].Value.ToString()}'");
+            }
+            _db.DeleteAll(Config.Tables[(int)Config.eTName._credit]);
+            for (int i = 0; i < dvCreditInfo.RowCount - 1; i++)
+            {
+                _db.Insert(Config.Tables[(int)Config.eTName._credit], $"'{dvCreditInfo.Rows[i].Cells[0].Value.ToString()}'," +
+                    $"'{dvCreditInfo.Rows[i].Cells[1].Value.ToString()}', '{dvCreditInfo.Rows[i].Cells[2].Value.ToString()}'," +
+                    $"'{dvCreditInfo.Rows[i].Cells[3].Value.ToString()}', '{dvCreditInfo.Rows[i].Cells[4].Value.ToString()}'," +
+                    $"'{dvCreditInfo.Rows[i].Cells[5].Value.ToString()}'");
+            }
+        }
     }
 }

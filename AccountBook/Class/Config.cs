@@ -10,8 +10,8 @@ namespace AccountBook.Class
     public static class Config
     {
         public static string Database = "account_db";
-        public static string Server = "192.168.1.20";
-        public static string Port = "3306";
+        public static string Server = "yjhome.duckdns.org";
+        public static string Port = "7336";
         public static string UserID = "funluvin";
         public static string UserPassword = "Tmdn900*18";
 

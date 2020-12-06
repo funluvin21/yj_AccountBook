@@ -13,12 +13,27 @@ namespace AccountBook
 {
     public partial class fMain : Form
     {
+        private RTFDataAgent rTFDataAgent1 = new RTFDataAgent();
         DBMysql _db = new DBMysql();
         int cnt = 0;
 
         public fMain()
         {
             InitializeComponent();
+            RtfGlobal rtfGlobal = RtfGlobal.Instance;
+            RtfGlobal.SessionManager.OnSessionManagerEvent += SessionManager_OnSessionManagerEvent;
+
+            rTFDataAgent1.rDataEvent += RTFDataAgent1_rDataEvent;
+        }
+
+        private void RTFDataAgent1_rDataEvent(object sender, rDataEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SessionManager_OnSessionManagerEvent(object sender, SessionManagerEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void fMain_Load(object sender, EventArgs e)
@@ -116,6 +131,17 @@ namespace AccountBook
                     $"'{dvCreditInfo.Rows[i].Cells[3].Value.ToString()}', '{dvCreditInfo.Rows[i].Cells[4].Value.ToString()}'," +
                     $"'{dvCreditInfo.Rows[i].Cells[5].Value.ToString()}'");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string ipAddress = RtfGlobal.SessionManager.GetDnsToIp("yjhome.duckdns.org");
+            RtfGlobal.SessionManager.ConnectSessionsToServer(ipAddress, "7777");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            rTFDataAgent1.Data_Request("2000", 0, 0, 0, "text");
         }
     }
 }

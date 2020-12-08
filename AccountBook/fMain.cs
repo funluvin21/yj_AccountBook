@@ -141,7 +141,7 @@ namespace AccountBook
 
         private void button3_Click(object sender, EventArgs e)
         {
-            rTFDataAgent1.Data_Request("2000", 0, 0, 0, "text");
+            rTFDataAgent1.Data_Request("2000", 0, 0, 0, "text\r\n");
         }
     }
 }

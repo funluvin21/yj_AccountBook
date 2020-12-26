@@ -14,6 +14,8 @@ namespace AccountBook.Class
         //public static string Port = "3306";
         public static string Server = "yjhome.duckdns.org";
         public static string Port = "7336";
+        public static string Server = "yjhome.duckdns.org";
+        public static string Port = "7336";
         public static string UserID = "funluvin";
         public static string UserPassword = "Tmdn900*18";
 

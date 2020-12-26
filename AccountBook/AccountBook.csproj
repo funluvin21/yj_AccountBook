@@ -92,8 +92,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\RtfAsyncSocket.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\Config.cs" />
+    <Compile Include="Class\RTFDataAgent.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\DBMysql.cs" />
+    <Compile Include="Class\RtfGlobal.cs" />
+    <Compile Include="Class\RtfSession.cs" />
+    <Compile Include="Class\RtfSessionManager.cs" />
     <Compile Include="fMain.cs">
       <SubType>Form</SubType>
     </Compile>
